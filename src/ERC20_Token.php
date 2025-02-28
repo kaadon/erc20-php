@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace FurqanSiddiqui\Ethereum\ERC20;
+namespace Kaadon\Ethereum\ERC20;
 
-use FurqanSiddiqui\Ethereum\Buffers\EthereumAddress;
-use FurqanSiddiqui\Ethereum\Contracts\DeployedContract;
-use FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException;
+use Kaadon\Ethereum\Buffers\EthereumAddress;
+use Kaadon\Ethereum\Contracts\DeployedContract;
+use Kaadon\Ethereum\ERC20\Exception\ERC20TokenException;
 
 /**
  * Class ERC20_Token
@@ -35,65 +35,64 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function name(): string
     {
+        if ($this->_name) return $this->_name;
         return $this->constantCall("name", "_name", fn(string $name): string => $this->cleanOutputASCII($name));
     }
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function symbol(): string
     {
+        if ($this->_symbol) return $this->_symbol;
         return $this->constantCall("symbol", "_symbol", fn(string $symbol): string => $this->cleanOutputASCII($symbol));
     }
 
     /**
      * @return int
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function decimals(): int
     {
+        if ($this->_decimals) return $this->_decimals;
         return $this->constantCall("decimals", "_decimals", fn(string $dec): int => intval($dec));
     }
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function totalSupply(): string
     {
+        if ($this->_totalSupply) return $this->_totalSupply;
         return $this->constantCall("totalSupply", "_totalSupply", null);
     }
 
     /**
-     * @param \FurqanSiddiqui\Ethereum\Buffers\EthereumAddress $address
+     * @param \Kaadon\Ethereum\Buffers\EthereumAddress $address
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function balanceOf(EthereumAddress $address): string
     {
-        $balance = $this->call("balanceOf", [strval($address)])["balance"] ?? null;
-        if (!is_string($balance)) {
-            throw new ERC20TokenException('Failed to retrieve address token balance');
-        }
-
-        return $balance;
+        return $this->getScaledValue($this->call("balanceOf", [strval($address)])[0] ?? 0);
     }
 
     /**
-     * @param \FurqanSiddiqui\Ethereum\Buffers\EthereumAddress $dest
+     * @param \Kaadon\Ethereum\Buffers\EthereumAddress $dest
      * @param int|string $amount
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\Exception\Contract_ABIException
+     * @throws \Kaadon\Ethereum\Exception\Contract_ABIException
      */
     public function encodeTransferData(EthereumAddress $dest, int|string $amount): string
     {
@@ -103,8 +102,8 @@ class ERC20_Token extends DeployedContract
     /**
      * @param string $value
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function fromScaledValue(string $value): string
     {
@@ -114,8 +113,8 @@ class ERC20_Token extends DeployedContract
     /**
      * @param int|string $value
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function getScaledValue(int|string $value): string
     {
@@ -127,8 +126,8 @@ class ERC20_Token extends DeployedContract
      * @param string $prop
      * @param callable|null $manipulator
      * @return mixed
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     private function constantCall(string $func, string $prop, ?callable $manipulator): mixed
     {
@@ -152,8 +151,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return array
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function __debugInfo(): array
     {
@@ -173,8 +172,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return array
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function toArray(): array
     {
