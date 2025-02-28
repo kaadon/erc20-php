@@ -12,13 +12,13 @@
 
 declare(strict_types=1);
 
-namespace FurqanSiddiqui\Ethereum\ERC20\Exception;
+namespace Kaadon\Ethereum\ERC20\Exception;
 
-use FurqanSiddiqui\Ethereum\Exception\ContractsException;
+use Kaadon\Ethereum\Exception\ContractsException;
 
 /**
  * Class ERC20TokenException
- * @package FurqanSiddiqui\Ethereum\ERC20\Exception
+ * @package Kaadon\Ethereum\ERC20\Exception
  */
 class ERC20TokenException extends ContractsException
 {

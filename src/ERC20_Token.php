@@ -12,11 +12,11 @@
 
 declare(strict_types=1);
 
-namespace FurqanSiddiqui\Ethereum\ERC20;
+namespace Kaadon\Ethereum\ERC20;
 
-use FurqanSiddiqui\Ethereum\Buffers\EthereumAddress;
-use FurqanSiddiqui\Ethereum\Contracts\DeployedContract;
-use FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException;
+use Kaadon\Ethereum\Buffers\EthereumAddress;
+use Kaadon\Ethereum\Contracts\DeployedContract;
+use Kaadon\Ethereum\ERC20\Exception\ERC20TokenException;
 
 /**
  * Class ERC20_Token
@@ -35,8 +35,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function name(): string
     {
@@ -45,8 +45,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function symbol(): string
     {
@@ -55,8 +55,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return int
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function decimals(): int
     {
@@ -65,8 +65,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function totalSupply(): string
     {
@@ -74,10 +74,10 @@ class ERC20_Token extends DeployedContract
     }
 
     /**
-     * @param \FurqanSiddiqui\Ethereum\Buffers\EthereumAddress $address
+     * @param \Kaadon\Ethereum\Buffers\EthereumAddress $address
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function balanceOf(EthereumAddress $address): string
     {
@@ -90,10 +90,10 @@ class ERC20_Token extends DeployedContract
     }
 
     /**
-     * @param \FurqanSiddiqui\Ethereum\Buffers\EthereumAddress $dest
+     * @param \Kaadon\Ethereum\Buffers\EthereumAddress $dest
      * @param int|string $amount
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\Exception\Contract_ABIException
+     * @throws \Kaadon\Ethereum\Exception\Contract_ABIException
      */
     public function encodeTransferData(EthereumAddress $dest, int|string $amount): string
     {
@@ -103,8 +103,8 @@ class ERC20_Token extends DeployedContract
     /**
      * @param string $value
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function fromScaledValue(string $value): string
     {
@@ -114,8 +114,8 @@ class ERC20_Token extends DeployedContract
     /**
      * @param int|string $value
      * @return string
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function getScaledValue(int|string $value): string
     {
@@ -127,8 +127,8 @@ class ERC20_Token extends DeployedContract
      * @param string $prop
      * @param callable|null $manipulator
      * @return mixed
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     private function constantCall(string $func, string $prop, ?callable $manipulator): mixed
     {
@@ -152,8 +152,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return array
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function __debugInfo(): array
     {
@@ -173,8 +173,8 @@ class ERC20_Token extends DeployedContract
 
     /**
      * @return array
-     * @throws \FurqanSiddiqui\Ethereum\ERC20\Exception\ERC20TokenException
-     * @throws \FurqanSiddiqui\Ethereum\Exception\EthereumException
+     * @throws \Kaadon\Ethereum\ERC20\Exception\ERC20TokenException
+     * @throws \Kaadon\Ethereum\Exception\EthereumException
      */
     public function toArray(): array
     {

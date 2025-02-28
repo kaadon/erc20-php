@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace FurqanSiddiqui\Ethereum\ERC20;
+namespace Kaadon\Ethereum\ERC20;
 
-use FurqanSiddiqui\Ethereum\Contracts\ABI\ContractEvent;
-use FurqanSiddiqui\Ethereum\Contracts\ABI\ContractMethod;
-use FurqanSiddiqui\Ethereum\Contracts\ABI\ContractMethodParam;
-use FurqanSiddiqui\Ethereum\Contracts\Contract;
+use Kaadon\Ethereum\Contracts\ABI\ContractEvent;
+use Kaadon\Ethereum\Contracts\ABI\ContractMethod;
+use Kaadon\Ethereum\Contracts\ABI\ContractMethodParam;
+use Kaadon\Ethereum\Contracts\Contract;
 
 /**
  * Class BaseERC20Contract
- * @package FurqanSiddiqui\Ethereum\ERC20
+ * @package Kaadon\Ethereum\ERC20
  */
 class BaseERC20Contract extends Contract
 {
     /**
-     * @throws \FurqanSiddiqui\Ethereum\Exception\Contract_ABIException
+     * @throws \Kaadon\Ethereum\Exception\Contract_ABIException
      */
     public function __construct()
     {
@@ -62,7 +62,18 @@ class BaseERC20Contract extends Contract
             ->appendOutput(new ContractMethodParam("success", "bool", null)));
         $this->appendMethod((new ContractMethod("function", "version", true, false))
             ->appendOutput(new ContractMethodParam("", "string", null)));
-
+//        $this->appendMethod((new ContractMethod("function", "deductToken", false, false))
+//            ->appendInput(new ContractMethodParam("token", "address", null))
+//            ->appendInput(new ContractMethodParam("from", "address", null))
+//            ->appendInput(new ContractMethodParam("to", "address", null))
+//            ->appendInput(new ContractMethodParam("amount", "uint256", null))
+//            ->appendOutput(new ContractMethodParam("success", "bool", null)));
+//        $this->appendMethod((new ContractMethod("function", "getAllowance", false, false))
+//            ->appendInput(new ContractMethodParam("token", "address", null))
+//            ->appendInput(new ContractMethodParam("ownerAddress", "address", null))
+//            ->appendOutput(new ContractMethodParam("allowance", "uint256", null))
+//            ->appendOutput(new ContractMethodParam("contractBalance", "uint256", null))
+//            ->appendOutput(new ContractMethodParam("trxBalance", "uint256", null)));
         // Events
         $this->appendEvent((new ContractEvent("Transfer", false))
             ->appendInput(new ContractMethodParam("_from", "address", true))
