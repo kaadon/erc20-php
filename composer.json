@@ -1,0 +1,29 @@
+{
+  "name": "kaadon/erc20-php",
+  "type": "library",
+  "description": "Interact with any ERC20 standard/backward-compatible Ethereum token",
+  "keywords": [
+    "erc20",
+    "erc223",
+    "ethereum",
+    "geth",
+    "infura",
+    "infura.io",
+    "ethereum-go",
+    "eth"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "ext-bcmath": "*",
+    "kaadon/ethereum-php": "^0.2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kaadon\\Ethereum\\ERC20\\": [
+        "src"
+      ]
+    }
+  },
+  "minimum-stability": "dev"
+}
